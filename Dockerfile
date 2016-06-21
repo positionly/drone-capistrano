@@ -3,7 +3,7 @@
 #     cd $GOPATH/src/github.com/drone-plugins/drone-capistrano
 #     make deps build docker
 
-FROM ruby:2.3-alpine
+FROM ruby:2.3.1-alpine
 
 RUN apk update \
   && apk add ca-certificates git openssh \
