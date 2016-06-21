@@ -80,6 +80,9 @@ func bundlerArgs(vargs Params) []string {
 	if len(vargs.BundlePath) > 0 {
 		args = append(args, "--path", vargs.BundlePath)
 	}
+	if len(vargs.BundleArgs) > 0 {
+		args = append(args, vargs.BundleArgs)
+	}
 	return args
 }
 
