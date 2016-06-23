@@ -86,7 +86,7 @@ func bundlerArgs(vargs Params) []string {
 
 func (w *DeployWorkspace) cap(tasks ...string) *exec.Cmd {
 	args := append([]string{"exec", "cap"}, tasks...)
-	return w.bundle(args...)
+	return w.command("/cmd.sh", args...)
 }
 
 func (w *DeployWorkspace) bundle(args ...string) *exec.Cmd {
