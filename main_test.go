@@ -21,19 +21,6 @@ func TestBundlerQuiet(t *testing.T) {
 	}
 }
 
-func TestBundlerPath(t *testing.T) {
-	vargs := Params{}
-	vargs.BundlePath = "foo/bar"
-	args := bundlerArgs(vargs)
-
-	if !containsString(args, "--path") {
-		t.Error("Missing --path argument in bundler arguments", args)
-	}
-	if !containsString(args, "foo/bar") {
-		t.Error("Missing --path argument value in bundler arguments", args)
-	}
-}
-
 func TestBundlerArgs(t *testing.T) {
 	vargs := Params{}
 	vargs.BundleArgs = "--without development"

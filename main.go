@@ -77,9 +77,7 @@ func bundlerArgs(vargs Params) []string {
 	if !vargs.Debug {
 		args = append(args, "--quiet")
 	}
-	if len(vargs.BundlePath) > 0 {
-		args = append(args, "--path", vargs.BundlePath)
-	}
+
 	if len(vargs.BundleArgs) > 0 {
 		args = append(args, vargs.BundleArgs)
 	}
