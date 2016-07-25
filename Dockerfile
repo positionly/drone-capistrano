@@ -7,7 +7,8 @@ FROM ruby:2.3.1-alpine
 
 RUN apk update \
   && apk add ca-certificates git openssh \
-  && rm -rf /var/cache/apk/*
+  && rm -rf /var/cache/apk/* \
+  && gem install bundler
 
 ENV BUNDLE_APP_CONFIG .bundle
 
