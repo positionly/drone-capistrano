@@ -1,7 +1,4 @@
-# Drone Capistrano Plugin [![Build Status](https://travis-ci.org/glaszig/drone-capistrano.svg?branch=master)](https://travis-ci.org/glaszig/drone-capistrano)
-
-This is the Capistrano plugin for the Drone continuous integration platform.
-Use this plugin to deploy applications with Capistrano.
+Use this plugin to deploy applications with capistrano.
 
 ## Config
 
