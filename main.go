@@ -32,6 +32,11 @@ func main() {
 			Usage:  "SSH public key",
 			EnvVar: "CAPISTRANO_PUBLIC_KEY",
 		},
+		cli.StringFlag{
+			Name:   "bundle_args",
+			Usage:  "bundle install extra arguments",
+			EnvVar: "PLUGIN_BUNDLE_ARGS",
+		},
 	}
 
 	if err := app.Run(os.Args); err != nil {
@@ -42,6 +47,7 @@ func main() {
 func run(c *cli.Context) error {
 	plugin := Plugin{
 		Config: Config{
+			BundleArgs: c.String("bundle_args"),
 			Tasks:      c.String("tasks"),
 			PrivateKey: c.String("private_key"),
 			PublicKey:  c.String("public_key"),

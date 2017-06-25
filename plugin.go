@@ -11,6 +11,7 @@ import (
 type (
 	Config struct {
 		Tasks      string
+		BundleArgs string
 		PrivateKey string
 		PublicKey  string
 	}
@@ -35,13 +36,14 @@ func (p Plugin) Exec() error {
 		return fmt.Errorf("Please provide Capistrano tasks to execute")
 	}
 
-	printLog("Running Bundler")
-	bundle := bundle("install")
+	printLog("Running Bundler", p.Config.BundleArgs)
+	bundle := bundle("install", p.Config.BundleArgs)
+
 	if err := bundle.Run(); err != nil {
 		return fmt.Errorf("Bundler failed. %s", err)
 	}
 
-	printLog("Running Capistrano")
+	printLog("Running Capistrano", tasks)
 	capistrano := capistrano(tasks...)
 	if err := capistrano.Run(); err != nil {
 		return fmt.Errorf("Capistrano failed. %s", err)
@@ -61,7 +63,6 @@ func bundle(args ...string) *exec.Cmd {
 
 func shellCommand(cmd string, args ...string) *exec.Cmd {
 	c := exec.Command(cmd, args...)
-	// c.Dir = w.Workspace.Path
 	c.Env = os.Environ()
 	c.Stdout = os.Stdout
 	c.Stderr = os.Stderr
