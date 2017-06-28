@@ -23,13 +23,13 @@ it is not exposed to users. This can be done using the drone-cli.
 drone secret add \
   --name capistrano_private_key \
   --value @$HOME/.ssh/drone-deploy \
-  --image glaszig/drone-capistrano
+  --image unamo/drone-capistrano
   --repository octocat/hello-world
 
 drone secret add \
   --name capistrano_public_key \
   --value @$HOME/.ssh/drone-deploy.pub \
-  --image glaszig/drone-capistrano
+  --image unamo/drone-capistrano
   --repository octocat/hello-world
 ```
 
@@ -43,7 +43,7 @@ The following is a sample configuration in your .drone.yml file:
 ```yaml
 pipeline:
   deploy:
-    image: glaszig/drone-capistrano
+    image: unamo/drone-capistrano
     repo: octocat/hello-world
     tasks: production deploy
     secrets:
