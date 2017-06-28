@@ -76,12 +76,12 @@ func writeSshKey(c Config) error {
 
 	_ = os.MkdirAll("/root/.ssh", 0700)
 
-	err = ioutil.WriteFile("/root/.ssh/capistrano", private_key_bytes, 0600)
+	err = ioutil.WriteFile("/root/.ssh/id_rsa", private_key_bytes, 0600)
 	if err != nil {
 		return fmt.Errorf("Failed writing private key: %s", err)
 	}
 
-	err = ioutil.WriteFile("/root/.ssh/capistrano.pub", public_key_bytes, 0644)
+	err = ioutil.WriteFile("/root/.ssh/id_rsa.pub", public_key_bytes, 0644)
 	if err != nil {
 		return fmt.Errorf("Failed writing public key: %s", err)
 	}
